@@ -18,8 +18,9 @@ import axios from 'axios';
 import { Toaster, toast } from 'react-hot-toast';
 import { Loader } from 'components/Loader/Loader';
 
-const value = JSON.parse(localStorage.getItem('user'));
+const value = JSON.parse(sessionStorage.getItem('user'));
 
+// const initilState = value ? value:  null;
 const initilState = value ? value : {};
 
 const CardInfo = () => {
@@ -41,7 +42,7 @@ const CardInfo = () => {
     localStorage.setItem('isFollowing', JSON.stringify(isFollowing));
   }, [isFollowing]);
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('user', JSON.stringify(user));
   }, [user]);
 
   useEffect(() => {
