@@ -1,33 +1,17 @@
-import {
-  Avatar,
-  BoxImage,
-  Btn,
-  Conteiner,
-  Followers,
-  Line,
-  Logo,
-  Tweets,
-} from './Container.styled';
-import picture from 'images/picture.png';
-import logo from 'images/Logo.png';
-import avatar from 'images/Boy.png';
+import { Route, Routes } from 'react-router-dom';
+import CardInfo from '../pages/CardInfo/CardInfo';
+import Home from 'pages/Home';
+import Tweets from 'pages/Tweets';
+import { Layout } from './Layout/Layout';
 
 export const App = () => {
   return (
-    <Conteiner>
-      <div>
-        <Logo>
-          <img src={logo} alt="logo" />
-        </Logo>
-        <BoxImage src={picture} alt="Main background picture" />
-        <Line></Line>
-
-        <Avatar src={avatar} alt="avatar" />
-
-        <Tweets> 777 tweets</Tweets>
-        <Followers> 100,500 followers</Followers>
-        <Btn>Follow</Btn>
-      </div>
-    </Conteiner>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="tweets" element={<Tweets />} />
+        <Route path="tweets/:personId" element={<CardInfo />} />
+      </Route>
+    </Routes>
   );
 };
